@@ -7,25 +7,25 @@
   <title>Number Guessing Game</title>
 </head>
 
-<body>
-  <h1>Number Guessing Game</h1>
-  <p>Guess the number between 1 and 100</p>
-  <form action="index.php" method="post">
-    <input type="number" name="guess" placeholder="Enter your guess">
-    <button type="submit">Submit</button>
+<body style="background-color: #f0f0f0; font-family: Arial, sans-serif;margin: 0;">
+  <h1 style="text-align: center; color: #333;">Number Guessing Game</h1>
+  <p style="text-align: center; color: #666;">Guess the number between 1 and 100</p>
+  <form action="index.php" method="post" style="text-align: center;">
+    <input type="number" name="guess" placeholder="Enter your guess" style="padding: 10px; margin: 10px; border: 1px solid #ccc; border-radius: 5px; width: 200px; text-align: center;">
+    <button type="submit" style="padding: 10px 20px; margin: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
   </form>
 
   <!-- display the feedback to the user -->
 
   <?php
   if (isset($message)): ?>
-    <p><?php echo $message; ?></p>
+    <p style="text-align: center; color: #333;"><?php echo $message; ?></p>
   <?php endif; ?>
 
 
   <!-- button to reset the game -->
   <form method="post">
-    <button type="submit" name="reset" value="true">Reset Game</button>
+    <button type="submit" name="reset" value="true" style="padding: 10px 20px; margin: 10px; background-color: darkorange; color: white; border: none; border-radius: 5px; cursor: pointer; display: block; margin-left: auto; margin-right: 680px; text-align: center; font-size: 16px; font-weight: bold; margin-top: 50px;">Play Again</button>
   </form>
 
 
