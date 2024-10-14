@@ -47,6 +47,7 @@ if (isset($_POST['reset'])) {
 
 <body style="background-color: #f0f0f0; font-family: Arial, sans-serif;margin: 0;">
   <h1 style="text-align: center; color: #333;">Number Guessing Game</h1>
+  <h2 style="text-align: center; color: #666;"> কম ক্লিকের মধ্যেই গেইস করার চেষ্টা করুন </h2>
   <p style="text-align: center; color: #666;">Guess the number between 1 and 100</p>
   <form action="index.php" method="post" style="text-align: center;">
     <input type="number" name="guess" placeholder="Enter your guess" style="padding: 10px; margin: 10px; border: 1px solid #ccc; border-radius: 5px; width: 200px; text-align: center;">
