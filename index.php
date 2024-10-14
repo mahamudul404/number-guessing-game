@@ -50,6 +50,11 @@ if(isset($_POST['guess'])) {
   $_SESSION['attempts']++;
   $randomNumber = $_SESSION['randomNumber'];
 }
+// user er guess er feedback dekha
+
+if ($guess < $randomNumber) {
+  $message = "Too low! Try again.";
+}
 
 
 ?>
