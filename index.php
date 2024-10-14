@@ -66,6 +66,9 @@ if (isset($_POST['reset'])) {
     <button style="padding: 10px 20px; margin: 10px; background-color: darkorange; color: white; border: none; border-radius: 5px; cursor: pointer; display: block; margin-left: auto; margin-right: 680px; text-align: center; font-size: 16px; font-weight: bold; margin-top: 50px;" type="submit" name="reset">Play Again</button>
   </form>
 
+  <!-- i need the footer is always at the bottom -->
+
+ <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; color: #666; padding: 10px;">Developed by <a href="https://www.facebook.com/mahamudul404">Mahamudul Hasan</a></footer>
 
 </body>
 
