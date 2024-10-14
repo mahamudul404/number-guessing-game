@@ -32,3 +32,24 @@
 </body>
 
 </html>
+
+<?php 
+session_start();
+// start the game if the session is not set
+
+if (!isset($_SESSION['randomNumber'])) {
+
+  $_SESSION['randomNumber'] = rand(1, 100);
+  $_SESSION['attempts'] = 0;
+}
+
+// user er guess er jonno , uuser jeta guess korbe tar upor
+
+if(isset($_POST['guess'])) {
+  $guess = intval($_POST['guess']);
+  $_SESSION['attempts']++;
+  $randomNumber = $_SESSION['randomNumber'];
+}
+
+
+?>
