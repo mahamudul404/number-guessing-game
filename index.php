@@ -1,38 +1,37 @@
 <?php
 session_start();
-// start the game if the session is not set
 
+// suru korar jonno random number generate korbo
 if (!isset($_SESSION['randomNumber'])) {
-
+  // Generate a random number between 1 and 100
   $_SESSION['randomNumber'] = rand(1, 100);
-  $_SESSION['attempts'] = 0;
+  $_SESSION['attempts'] = 0; // Initialize the attempt counter
 }
 
-// user er guess er jonno , uuser jeta guess korbe tar upor
-
+// user guess ta check korbo
 if (isset($_POST['guess'])) {
-  $guess = intval($_POST['guess']);
-  $_SESSION['attempts']++;
+  $guess = intval($_POST['guess']); // Convert the input to an integer
+  $_SESSION['attempts']++; // Increment the attempt counter
   $randomNumber = $_SESSION['randomNumber'];
-}
-// user er guess er feedback dekha
 
-if ($guess < $randomNumber) {
-  $message = "Too low! Try again.";
-} elseif ($guess > $randomNumber) {
-  $message = "Too high! Try again.";
-} else {
-  $message = "Congratulations! You guessed the number in " . $_SESSION['attempts'] . " attempts.";
+  // user er guess er feedback dekha
+  if ($guess < $randomNumber) {
+    $message = "Too low! Try again.";
+  } elseif ($guess > $randomNumber) {
+    $message = "Too high! Try again.";
+  } else {
+    $message = "Congratulations! You've guessed the correct number in {$_SESSION['attempts']} attempts!";
+    unset($_SESSION['randomNumber']); // End the game by unsetting the number
+    unset($_SESSION['attempts']); // Reset attempts for a new game
+  }
+}
+
+// reset korar jonno button ta click korle
+if (isset($_POST['reset'])) {
   unset($_SESSION['randomNumber']);
   unset($_SESSION['attempts']);
-}
-
-// reset the game if the user wants to play again
-
-if (isset($_POST['reset'])) {
-  session_destroy();
-  header("Location: index.php");
-  exit();
+  header("Location: " . $_SERVER['PHP_SELF']);
+  exit;
 }
 
 ?>
@@ -54,17 +53,16 @@ if (isset($_POST['reset'])) {
     <button type="submit" style="padding: 10px 20px; margin: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
   </form>
 
-  <!-- display the feedback to the user -->
+  <!-- user er jonno feedback dekha -->
 
-  <?php
-  if (isset($message)): ?>
+  <?php if (isset($message)): ?>
     <p style="text-align: center; color: #333;"><?php echo $message; ?></p>
   <?php endif; ?>
 
 
-  <!-- button to reset the game -->
-  <form method="post">
-    <button type="submit" name="reset" value="true" style="padding: 10px 20px; margin: 10px; background-color: darkorange; color: white; border: none; border-radius: 5px; cursor: pointer; display: block; margin-left: auto; margin-right: 680px; text-align: center; font-size: 16px; font-weight: bold; margin-top: 50px;">Play Again</button>
+  <!-- reset korar jonno button ta -->
+  <form method="POST">
+    <button style="padding: 10px 20px; margin: 10px; background-color: darkorange; color: white; border: none; border-radius: 5px; cursor: pointer; display: block; margin-left: auto; margin-right: 680px; text-align: center; font-size: 16px; font-weight: bold; margin-top: 50px;" type="submit" name="reset">Play Again</button>
   </form>
 
 
