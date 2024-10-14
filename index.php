@@ -1,3 +1,42 @@
+<?php
+session_start();
+// start the game if the session is not set
+
+if (!isset($_SESSION['randomNumber'])) {
+
+  $_SESSION['randomNumber'] = rand(1, 100);
+  $_SESSION['attempts'] = 0;
+}
+
+// user er guess er jonno , uuser jeta guess korbe tar upor
+
+if (isset($_POST['guess'])) {
+  $guess = intval($_POST['guess']);
+  $_SESSION['attempts']++;
+  $randomNumber = $_SESSION['randomNumber'];
+}
+// user er guess er feedback dekha
+
+if ($guess < $randomNumber) {
+  $message = "Too low! Try again.";
+} elseif ($guess > $randomNumber) {
+  $message = "Too high! Try again.";
+} else {
+  $message = "Congratulations! You guessed the number in " . $_SESSION['attempts'] . " attempts.";
+  unset($_SESSION['randomNumber']);
+  unset($_SESSION['attempts']);
+}
+
+// reset the game if the user wants to play again
+
+if (isset($_POST['reset'])) {
+  session_destroy();
+  header("Location: index.php");
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,37 +71,3 @@
 </body>
 
 </html>
-
-<?php
-session_start();
-// start the game if the session is not set
-
-if (!isset($_SESSION['randomNumber'])) {
-
-  $_SESSION['randomNumber'] = rand(1, 100);
-  $_SESSION['attempts'] = 0;
-}
-
-// user er guess er jonno , uuser jeta guess korbe tar upor
-
-if (isset($_POST['guess'])) {
-  $guess = intval($_POST['guess']);
-  $_SESSION['attempts']++;
-  $randomNumber = $_SESSION['randomNumber'];
-}
-// user er guess er feedback dekha
-
-if ($guess < $randomNumber) {
-  $message = "Too low! Try again.";
-} elseif ($guess > $randomNumber) {
-  $message = "Too high! Try again.";
-} else {
-  $message = "Congratulations! You guessed the number in " . $_SESSION['attempts'] . " attempts.";
-  unset($_SESSION['randomNumber']);
-  unset($_SESSION['attempts']);
-}
-
-
-
-
-?>
