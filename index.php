@@ -33,7 +33,7 @@
 
 </html>
 
-<?php 
+<?php
 session_start();
 // start the game if the session is not set
 
@@ -45,7 +45,7 @@ if (!isset($_SESSION['randomNumber'])) {
 
 // user er guess er jonno , uuser jeta guess korbe tar upor
 
-if(isset($_POST['guess'])) {
+if (isset($_POST['guess'])) {
   $guess = intval($_POST['guess']);
   $_SESSION['attempts']++;
   $randomNumber = $_SESSION['randomNumber'];
@@ -54,7 +54,15 @@ if(isset($_POST['guess'])) {
 
 if ($guess < $randomNumber) {
   $message = "Too low! Try again.";
+} elseif ($guess > $randomNumber) {
+  $message = "Too high! Try again.";
+} else {
+  $message = "Congratulations! You guessed the number in " . $_SESSION['attempts'] . " attempts.";
+  unset($_SESSION['randomNumber']);
+  unset($_SESSION['attempts']);
 }
+
+
 
 
 ?>
