@@ -68,7 +68,7 @@ if (isset($_POST['reset'])) {
 
   <!-- i need the footer is always at the bottom -->
 
- <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; color: #666; padding: 10px;">Developed by <a href="https://www.facebook.com/mahamudul404">Mahamudul Hasan</a></footer>
+ <footer  style=" position: fixed; bottom: 0; width: 100%; text-align: center; color: #666; padding: 10px;  ">Developed by <a href="https://www.facebook.com/mahamudul404" target="_blank">Mahamudul Hasan</a></footer>
 
 </body>
 
